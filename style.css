@@ -1,3 +1,62 @@
-body{
-  background-color: #ccc;
+body, body * {
+  font-family: "microsoft jhenghei", Verdana, Arial, sans-serif;
+  font-size: 16px;
 }
+body{
+  background: url(bg.png) repeat;
+}
+.checked{
+  color: #f36161;
+  display: none;
+}
+@media screen and (min-width: 769px){
+  table{
+    border-collapse: collapse;
+  }
+  table td{
+    border: 1px solid #ccc;
+    padding: 10px ;
+    text-align: center;
+  }
+  table td:last-child{
+    border: 0;
+  }
+  table td i{
+    cursor: pointer;
+  }
+  
+  .rwd-mb{
+    display: none;
+  }
+}
+@media screen and (max-width: 768px){
+  .rwd-pc{
+    display: none;
+  }
+  .rwd-mb .row{
+    border: 1px solid #ccc;
+    position: relative;
+  }
+  .rwd-mb .row:not(:last-child){
+    border-bottom: 0;
+  }
+  .rwd-mb .row .col{
+    display: flex;
+    padding: 5px;
+    gap: 5px;
+  }
+  .rwd-mb .row > i{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+  .rwd-mb .row .checked{
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+  }
+
+}
+
+
+
