@@ -669,6 +669,12 @@
                 },3000)
             })
         })
+        $(document).keydown(function (e) {
+            let keyevent = event.which == 44 || event.key == 'PrintScreen'
+            if(!!keyevent) {
+                event.preventDefault()
+            }
+        })
         function copyToClipboard(item) {
             const clip = document.createElement('TEXTAREA')
             clip.value = item
