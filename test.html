@@ -45,7 +45,7 @@
 
     <!-- mobile -->
     <div class="rwd-mb" v-if="mobileitems.length > 1">
-        <div class="row tr" v-for="(item, key) in mobileitems">
+        <div class="row tr" v-for="(item, key) in mobileitems" v-if="key > 1">
             <div class="col">
                 <div>{{item[0]}} {{item[1]}}</div>
                 <div class="location">{{item[2]}}</div>
@@ -56,6 +56,11 @@
             </div>
             <i class="fa-regular fa-copy" @click.once="copyLocation()"></i>
             <div class="checked"><i class="fa-solid fa-check"></i> 已複製</div>
+        </div>
+        <div class="row tr" v-else-if="key == 0">
+            <div class="col">
+                <div>{{item[8]}}</div>
+            </div>
         </div>
     </div>
 </div>
