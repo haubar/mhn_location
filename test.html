@@ -22,6 +22,14 @@
             <td>{{item[9]}}</td>
             <td>{{item[11]}}</td>
         </tr>
+         <tr class="tr" v-else-if="key == 0"> 
+            <td>{{item[0]}}</td>
+            <td>{{item[1]}}</td>
+            <td class="location">{{item[2]}}</td>
+            <td colspan="4">{{item[8]}}</td>
+            <td></td>
+            <td></td>
+        </tr>
         <tr class="tr" v-else-if="key > 1"> 
             <td>{{item[0]}}</td>
             <td>{{item[1]}}</td>
