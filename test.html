@@ -30,7 +30,7 @@
             <td>{{item[9]}}</td>
             <td>{{item[10]}}</td>
             <td>{{item[11]}}</td>
-            <td><i class="fa-regular fa-copy"></i></td>
+            <td><i class="fa-regular fa-copy" @click='copyLocation()'></i></td>
             <td class="checked"><i class="fa-solid fa-check"></i> 已複製</td>
         </tr>
     </table>
@@ -46,7 +46,7 @@
                 <div>{{item[3]}} {{item[4]}}  開始</div> ~ 
                 <div>{{item[5]}} {{item[6]}}  結束</div>
             </div>
-            <i class="fa-regular fa-copy"></i>
+            <i class="fa-regular fa-copy" @click='copyLocation()'></i>
             <div class="checked"><i class="fa-solid fa-check"></i> 已複製</div>
         </div>
     </div>
@@ -63,6 +63,19 @@
             data: {
                 pcitems: {}
             },
+            methods: {
+                copyLocation(){
+                    $(".fa-copy").click(function () {
+                        let location = $(this).parents('.tr').find('.location').text()
+                        console.info('info', location)
+                        copyToClipboard(location)
+                        $(this).parents('.tr').find('.checked').show().addClass('on')
+                        setTimeout(function(){
+                            $(".checked.on").hide().removeClass('on')
+                        },3000)
+                    })
+                }
+            },
             mounted(){
                 $.ajax({
                     url: pc_url,
@@ -74,13 +87,28 @@
                         console.info("無資料", res)
                     }
                 })
+                
                
             }
+           
         })
         let mobile_view = new Vue({
             el: '#rwd-mb',
             data: {
                 mobileitems: {}
+            },
+            methods: {
+                copyLocation(){
+                    $(".fa-copy").click(function () {
+                        let location = $(this).parents('.tr').find('.location').text()
+                        console.info('info', location)
+                        copyToClipboard(location)
+                        $(this).parents('.tr').find('.checked').show().addClass('on')
+                        setTimeout(function(){
+                            $(".checked.on").hide().removeClass('on')
+                        },3000)
+                    })
+                }
             },
             mounted(){
                 $.ajax({
