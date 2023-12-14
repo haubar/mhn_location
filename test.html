@@ -36,15 +36,15 @@
     </table>
 
     <!-- mobile -->
-    <div class="rwd-mb" id="rwd-mb" v-if="mobileitems.length > 0">
+    <div class="rwd-mb" id="rwd-mb" v-if="mobileitems.length > 1">
         <div class="row tr" v-for="(item, key) in mobileitems">
             <div class="col">
                 <div>{{item[0]}} {{item[1]}}</div>
                 <div class="location">{{item[2]}}</div>
             </div>
             <div class="col">
-                <div>{{item[3]}} {{item[4]}}  開始</div> ~ 
-                <div>{{item[5]}} {{item[6]}}  結束</div>
+                <div>{{item[8]}} {{item[9]}}  開始</div> ~ 
+                <div>{{item[10]}} {{item[11]}}  結束</div>
             </div>
             <i class="fa-regular fa-copy" @click.once="copyLocation()"></i>
             <div class="checked"><i class="fa-solid fa-check"></i> 已複製</div>
@@ -61,7 +61,8 @@
         let view = new Vue({
             el: '#rwd-pc',
             data: {
-                pcitems: {}
+                pcitems: {},
+                mobileitems: {}
             },
             methods: {
                 copyLocation(){
@@ -82,6 +83,7 @@
                     dataType: 'json',
                     success: function (res) {
                         view.pcitems = (res.values)
+                        view.mobileitems = (res.values)
                     },
                     error: function (res){
                         console.info("無資料", res)
@@ -92,37 +94,37 @@
             }
            
         })
-        let mobile_view = new Vue({
-            el: '#rwd-mb',
-            data: {
-                mobileitems: {}
-            },
-            methods: {
-                copyLocation(){
-                    $(".fa-copy").click(function () {
-                        let location = $(this).parents('.tr').find('.location').text()
-                        console.info('info', location)
-                        copyToClipboard(location)
-                        $(this).parents('.tr').find('.checked').show().addClass('on')
-                        setTimeout(function(){
-                            $(".checked.on").hide().removeClass('on')
-                        },3000)
-                    })
-                }
-            },
-            mounted(){
-                $.ajax({
-                    url: mobile_url,
-                    dataType: 'json',
-                    success: function (res) {
-                        mobile_view.mobileitems = (res.values)
-                    },
-                    error: function (res){
-                        console.info("無資料", res)
-                    }
-                })
-            }
-        })
+        // let mobile_view = new Vue({
+        //     el: '#rwd-mb',
+        //     data: {
+        //         mobileitems: {}
+        //     },
+        //     methods: {
+        //         copyLocation(){
+        //             $(".fa-copy").click(function () {
+        //                 let location = $(this).parents('.tr').find('.location').text()
+        //                 console.info('info', location)
+        //                 copyToClipboard(location)
+        //                 $(this).parents('.tr').find('.checked').show().addClass('on')
+        //                 setTimeout(function(){
+        //                     $(".checked.on").hide().removeClass('on')
+        //                 },3000)
+        //             })
+        //         }
+        //     },
+        //     mounted(){
+        //         $.ajax({
+        //             url: mobile_url,
+        //             dataType: 'json',
+        //             success: function (res) {
+        //                 mobile_view.mobileitems = (res.values)
+        //             },
+        //             error: function (res){
+        //                 console.info("無資料", res)
+        //             }
+        //         })
+        //     }
+        // })
 
         //copy to clipboard
         function copyToClipboard(item) {
