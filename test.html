@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="style.css">
 
 </head>
-<body id="rwd-main">
-    
+<body>
+<div id="rwd-main">
     <!-- pc -->
     <table class="rwd-pc" v-if="pcitems.length > 0">
         <tr class="tr" v-for="(item, key) in pcitems" v-if="key == 1">
@@ -50,14 +50,13 @@
             <div class="checked"><i class="fa-solid fa-check"></i> 已複製</div>
         </div>
     </div>
-
+</div>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/> 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
 
     <script>
         let pc_url = "https://sheets.googleapis.com/v4/spreadsheets/1-ajG5it_r4panQE7J9Sv6JSIA-gq-xG-FJJPSpcb74Y/values/%E9%9B%BB%E8%85%A6%E7%89%88?alt=json&key=AIzaSyA_hIi-8mQ2uZb7W_0Q_FY4hD2qk9gKUgA"
-        // let mobile_url = "https://sheets.googleapis.com/v4/spreadsheets/1-ajG5it_r4panQE7J9Sv6JSIA-gq-xG-FJJPSpcb74Y/values/%E6%89%8B%E6%A9%9F%E6%9D%BF?alt=json&key=AIzaSyA_hIi-8mQ2uZb7W_0Q_FY4hD2qk9gKUgA"
         let view = new Vue({
             el: '#rwd-main',
             data: {
