@@ -78,7 +78,8 @@
             },
             methods: {
                 copyLocation(){
-                    $(".fa-copy").click(function () {
+                    // $(".fa-copy").click(function () {
+                    $(document).on('click','.fa-copy',function(){
                         let location = $(this).parents('.tr').find('.location').text()
                         console.info('info', location)
                         copyToClipboard(location)
