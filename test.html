@@ -89,10 +89,6 @@
                     })
                 }
             },
-            created(){
-                //初始化event
-                this.copyLocation()
-            },
             mounted(){
                 $.ajax({
                     url: pc_url,
@@ -105,8 +101,8 @@
                         console.info("無資料", res)
                     }
                 })
-                
-               
+                //copy事件初始化
+                this.copyLocation()
             }
            
         })
